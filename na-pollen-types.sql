@@ -13,12 +13,12 @@ SELECT DISTINCT taxa.taxonid AS TaxonID, taxa.taxonname AS TaxonName, htaxa1.tax
 FROM ndb.sites
     INNER JOIN ndb.collectionunits AS cus    ON sites.siteid         = cus.siteid
     INNER JOIN ndb.analysisunits   AS aus    ON cus.collectionunitid = aus.collectionunitid
-	INNER JOIN ndb.samples         AS samp   ON aus.analysisunitid   = samp.analysisunitid
-	INNER JOIN ndb.data            AS dat    ON samp.sampleid        = dat.sampleid
+    INNER JOIN ndb.samples         AS samp   ON aus.analysisunitid   = samp.analysisunitid
+    INNER JOIN ndb.data            AS dat    ON samp.sampleid        = dat.sampleid
     INNER JOIN ndb.variables       AS var    ON dat.variableid       = var.variableid
-  	INNER JOIN ndb.taxa                      ON var.taxonid          = taxa.taxonid
-  	INNER JOIN ndb.taxa            AS htaxa1 ON taxa.highertaxonid   = htaxa1.taxonid
-  	INNER JOIN ndb.taxa            AS htaxa2 ON htaxa1.highertaxonid = htaxa2.taxonid
+    INNER JOIN ndb.taxa                      ON var.taxonid          = taxa.taxonid
+    INNER JOIN ndb.taxa            AS htaxa1 ON taxa.highertaxonid   = htaxa1.taxonid
+    INNER JOIN ndb.taxa            AS htaxa2 ON htaxa1.highertaxonid = htaxa2.taxonid
     INNER JOIN ndb.ecolgroups      AS ecg    ON taxa.taxonid         = ecg.taxonid
     INNER JOIN ndb.ecolsettypes    AS est    ON ecg.ecolsetid        = est.ecolsetid
 WHERE est.ecolsetid = 1 AND sites.longitudeeast <= -52.28333 AND sites.longitudewest >= -166.6833
