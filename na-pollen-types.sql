@@ -15,8 +15,8 @@ FROM ndb.sites
     INNER JOIN ndb.analysisunits   AS aus    ON cus.collectionunitid = aus.collectionunitid
     INNER JOIN ndb.samples         AS samp   ON aus.analysisunitid   = samp.analysisunitid
     INNER JOIN ndb.data            AS dat    ON samp.sampleid        = dat.sampleid
-    INNER JOIN ndb.variables       AS var    ON dat.variableid       = var.variableid
-    INNER JOIN ndb.taxa                      ON var.taxonid          = taxa.taxonid
+    INNER JOIN ndb.variables       AS vari    ON dat.variableid       = vari.variableid
+    INNER JOIN ndb.taxa                      ON vari.taxonid          = taxa.taxonid
     INNER JOIN ndb.taxa            AS htaxa1 ON taxa.highertaxonid   = htaxa1.taxonid
     INNER JOIN ndb.taxa            AS htaxa2 ON htaxa1.highertaxonid = htaxa2.taxonid
     INNER JOIN ndb.ecolgroups      AS ecg    ON taxa.taxonid         = ecg.taxonid
